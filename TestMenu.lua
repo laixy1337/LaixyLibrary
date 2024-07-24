@@ -89,16 +89,29 @@ local Toggle = MainTab:CreateToggle({
    CurrentValue = false,
    Flag = "Noclip1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
    Callback = function(value)
-	if value == true then
-	repeat
-	    for a, b in pairs(Workspace:GetChildren()) do
-			if b.Name == game.Players.LocalPlayer.Name then
-			for i, v in pairs(Workspace[game.Players.LocalPlayer.Name]:GetChildren()) do
-			if v:IsA("BasePart") then
-			v.CanCollide = false
-			end end end end
-	until value == false
-	end
+        local character = game.Players.LocalPlayer.Character
+
+        if value then
+            -- Noclip aktif
+            playerNoclip = game:GetService("RunService").Stepped:Connect(function()
+                for _, part in pairs(character:GetChildren()) do
+                    if part:IsA("BasePart") then
+                        part.CanCollide = false
+                    end
+                end
+            end)
+        else
+            -- Noclip devre dışı
+            if playerNoclip then
+                playerNoclip:Disconnect()
+            end
+            for _, part in pairs(character:GetChildren()) do
+                if part:IsA("BasePart") then
+                    part.CanCollide = true
+                end
+            end
+        end
+
    end,
 })
 
