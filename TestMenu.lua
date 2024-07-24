@@ -91,7 +91,7 @@ local Toggle = EspTab:CreateToggle({
    Name = "Esp",
    CurrentValue = false,
    Flag = "EspToggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
-   Callback = function(Value)
-			print("LaixCC")
+   Callback = function()
+	print("LaixCC")
    end,
 })
