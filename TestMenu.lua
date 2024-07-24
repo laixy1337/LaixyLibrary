@@ -84,7 +84,8 @@ local Button = MainTab:CreateButton({
    end,
 })
 
-local EspTab = Window:CreateTab("ESP", nil)
+local EspTab = Window:CreateTab("ESP", nil) -- Title, Image
+local EspSection = EspTab:CreateSection("Settings")
 
 local Toggle = EspTab:CreateToggle({
    CurrentValue = false,
