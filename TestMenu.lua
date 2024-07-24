@@ -77,6 +77,13 @@ local Button = MainTab:CreateButton({
    end,
 })
 
+local Button = MainTab:CreateButton({
+   Name = "TP Tool",
+   Callback = function()
+	loadstring(game:HttpGet('https://raw.githubusercontent.com/laixy1337/RobloxScripts/main/TPTool.lua'))()
+   end,
+})
+
 local Toggle = EspTab:CreateToggle({
    CurrentValue = false,
    Flag = "EspToggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
