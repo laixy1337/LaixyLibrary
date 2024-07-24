@@ -1,7 +1,7 @@
 local Laixy = loadstring(game:HttpGet('https://raw.githubusercontent.com/laixy1337/LaixyLibrary/main/library.lua'))()
 
 local Window = Laixy:CreateWindow({
-   Name = "Laix.CC",
+   Name = "LaixCC",
    LoadingTitle = "Da hood",
    LoadingSubtitle = "by laixy1337",
    ConfigurationSaving = {
