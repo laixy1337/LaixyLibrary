@@ -84,6 +84,29 @@ local Button = MainTab:CreateButton({
    end,
 })
 
+local Toggle = MainTab:CreateToggle({
+   Name = "Noclip",
+   CurrentValue = false,
+   Flag = "Noclip1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(value)
+	if value == true then
+	   Clipon = true
+	   if not Clipon == false then
+	    for a, b in pairs(Workspace:GetChildren()) do
+			if b.Name == Plr.Name then
+			for i, v in pairs(Workspace[Plr.Name]:GetChildren()) do
+			if v:IsA("BasePart") then
+			v.CanCollide = false
+			end end end end
+	   else
+	    Stepped:Disconnect()
+	   end
+	elseif value == false then
+  	    Clipon = false
+	end
+   end,
+})
+
 local EspTab = Window:CreateTab("ESP", nil) -- Title, Image
 local EspSection = EspTab:CreateSection("Settings")
 
