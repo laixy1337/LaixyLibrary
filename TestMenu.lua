@@ -86,4 +86,26 @@ local Button = MainTab:CreateButton({
 
 
 local EspTab = Window:CreateTab("ESP", nil)
+
+local Toggle = MainTab:CreateToggle({
+   Name = "ESP"
+   Callback = function()
+	local function addHighlight(player)
+    local character = player.Character or player.CharacterAdded:Wait()
+    
+    local highlight = Instance.new("Highlight")
+    highlight.Parent = character
+    highlight.FillColor = Color3.fromRGB(255, 0, 0) -- Kırmızı renk
+    highlight.OutlineColor = Color3.fromRGB(255, 0, 0) -- Kırmızı renk
+    highlight.Adornee = character
+end
+
+   for _, player in ipairs(Players:GetPlayers()) do
+    if player ~= LocalPlayer then
+        addHighlight(player)
+    end
+end
+   end,
+})
+
 local MiscTab = Window:CreateTab("Credits", nil)
