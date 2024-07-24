@@ -92,12 +92,12 @@ local Toggle = MainTab:CreateToggle({
 	if value == true then
 	repeat
 	    for a, b in pairs(Workspace:GetChildren()) do
-			if b.Name == Plr.Name then
-			for i, v in pairs(Workspace[Plr.Name]:GetChildren()) do
+			if b.Name == game.Players.LocalPlayer.Name then
+			for i, v in pairs(Workspace[game.Players.LocalPlayer.Name]:GetChildren()) do
 			if v:IsA("BasePart") then
 			v.CanCollide = false
 			end end end end
-				until value == false
+	until value == false
 	end
    end,
 })
