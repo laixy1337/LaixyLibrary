@@ -95,7 +95,7 @@ local Toggle = EspTab:CreateToggle({
 	for _, player in ipairs(game.Players:GetPlayers()) do
     if player ~= game.Players.LocalPlayer then
 
-    local character = player.Character or player.CharacterAdded:Wait()
+    local character = player.Character
     
     local highlight = Instance.new("Highlight")
     highlight.Parent = character
