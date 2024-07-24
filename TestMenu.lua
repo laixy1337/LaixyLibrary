@@ -84,7 +84,4 @@ local Button = MainTab:CreateButton({
    end,
 })
 
-
-
-
 local MiscTab = Window:CreateTab("Credits", nil)
