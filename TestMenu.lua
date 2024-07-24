@@ -87,10 +87,65 @@ local Button = MainTab:CreateButton({
 
 local EspTab = Window:CreateTab("ESP", nil)
 
-local Toggle = MainTab:CreateToggle({
-   Name = "ESP"
-   Callback = function()
-	
+local Toggle = EspTab:CreateToggle({
+   Name = "Esp",
+   CurrentValue = false,
+   Flag = "EspToggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+local function AddHighlight(plr)
+	local Highlight = Instance.new("Highlight")
+	Highlight.Parent = Higlight
+	Highlight.Name = plr.Name
+	Highlight.Enabled = DeleteMob.ESP.OutLines.Enabled
+	local plrchar = plr.Character
+	if plrchar then
+		Highlight.Adornee = plrchar
+	end
+	connections[plr] = plr.CharacterAdded:Connect(function(char)
+		Highlight.Adornee = char
+	end)
+	local co = coroutine.create(function()
+		while wait(.1) do
+			if plr ~= PLAYER and plr and plr.Character and plr.Character.FindFirstChild(plr.Character, "Humanoid") and plr.Character.Humanoid.Health > 0 then
+
+				if DeleteMob.ESP.OutLines.Enabled == true then
+					if DeleteMob.ESP.OutLines.TeamCheck == true and plr.TeamColor == PLAYER.TeamColor then
+						Highlight.Enabled = false
+					else
+						Highlight.Enabled = true
+					end
+				else-- Made By Mick Gordon
+					Highlight.Enabled = false
+				end
+
+				if DeleteMob.ESP.OutLines.TeamColor == true then
+					Highlight.FillColor = plr.TeamColor.Color 
+				else
+					Highlight.FillColor = DeleteMob.ESP.OutLines.FillCollor
+				end
+
+				if DeleteMob.ESP.OutLines.AllwaysShow == true then
+					Highlight.DepthMode = "AlwaysOnTop" 
+				else
+					Highlight.DepthMode = "Occluded" 
+				end-- Made By Mick Gordon
+
+				Highlight.OutlineTransparency = DeleteMob.ESP.OutLines.OutlineTrancparency
+				Highlight.OutlineColor = DeleteMob.ESP.OutLines.OutlineColor
+				Highlight.FillTransparency = DeleteMob.ESP.OutLines.FillTrancparenct
+
+				if not (game:GetService"Players":FindFirstChild(plr.Name)) then
+					Higlight:FindFirstChild(plr.Name):Destroy()
+					coroutine.yield()
+				end
+			else
+				Highlight.Enabled = false
+			end
+		end
+	end)
+	coroutine.resume(co)
+end
+end
    end,
 })
 
