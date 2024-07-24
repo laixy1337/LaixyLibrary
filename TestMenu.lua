@@ -124,10 +124,14 @@ local Toggle = EspTab:CreateToggle({
    Flag = "EspToggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
    Callback = function(value)
 	if value == true then
+		while wait(1) do
 		for _, player in ipairs(game.Players:GetPlayers()) do
 		    if player ~= game.Players.LocalPlayer then
 		
 			    local character = player.Character
+			    if character:FindFirstChild("Highlight") then
+				character:FindFirstChild("Highlight"):Destroy()
+			    end
 		
 			    local highlight = Instance.new("Highlight")
 			    highlight.Parent = character
@@ -135,6 +139,7 @@ local Toggle = EspTab:CreateToggle({
 			    highlight.OutlineColor = Color3.fromRGB(255, 0, 0)
 			    highlight.Adornee = character
 		    end
+		end
 		end
 	elseif value == false then
 		for _, player in ipairs(game.Players:GetPlayers()) do
