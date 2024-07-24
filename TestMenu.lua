@@ -76,12 +76,3 @@ if _G.infinJumpStarted == nil then
 end
    end,
 })
-
-local Button = MainTab:CreateButton({
-   Name = "TP Tool",
-   Callback = function()
-	loadstring(game:HttpGet('https://raw.githubusercontent.com/laixy1337/RobloxScripts/main/TPTool.lua'))()
-   end,
-})
-
-local MiscTab = Window:CreateTab("Credits", nil)
