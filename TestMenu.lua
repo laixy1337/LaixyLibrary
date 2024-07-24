@@ -85,5 +85,5 @@ local Button = MainTab:CreateButton({
 })
 
 
-local OtherSection = MainTab:CreateSection("Other")
-local TPTab = Window:CreateTab("Misc", nil)
+local EspTab = Window:CreateTab("ESP", nil)
+local MiscTab = Window:CreateTab("Credits", nil)
