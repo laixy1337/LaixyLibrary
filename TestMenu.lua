@@ -92,7 +92,7 @@ local Toggle = EspTab:CreateToggle({
    CurrentValue = false,
    Flag = "EspToggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
    Callback = function(value)
-	if value == false then
+	if value == true then
 		for _, player in ipairs(game.Players:GetPlayers()) do
 		    if player ~= game.Players.LocalPlayer then
 		
@@ -105,7 +105,7 @@ local Toggle = EspTab:CreateToggle({
 			    highlight.Adornee = character
 		    end
 		end
-	elseif value == true then
+	elseif value == false then
 		for _, player in ipairs(game.Players:GetPlayers()) do
 		    if player ~= game.Players.LocalPlayer then
 	
